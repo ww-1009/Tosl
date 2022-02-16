@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="maginSize">16dp</dimen>
+    <dimen name="maginSize2">32dp</dimen>
+    <dimen name="navBarHeight">50dp</dimen>
+    <dimen name="navBarTitleSize">22dp</dimen>
+    <dimen name="titleSize">18dp</dimen>
+    <dimen name="inputviewHeight">44dp</dimen>    //输入框高度
+    <dimen name="infoSize">18dp</dimen>
+    <dimen name="btnHeight">44dp</dimen>
+    <dimen name="radius">5dp</dimen>
+    <dimen name="maginTabSize">4dp</dimen>
+    <dimen name="albumMarginSize">4dp</dimen>
+    <dimen name="playNum">18dp</dimen>
+    <dimen name="discTopSize">100dp</dimen>
+    <dimen name="playMusicIconSize">210dp</dimen>
+
+
+</resources>

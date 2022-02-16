@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">knowu</string>
+    <string name="title_login_register">登录/注册</string>
+    <string name="action_get_verify_code">获取验证码</string>
+
+
+</resources>

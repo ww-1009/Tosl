@@ -1,0 +1,96 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="XUITheme.Phone">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        //RadioButton点击颜色
+<!--        <item name="colorAccent">@color/colorPrimary</item>-->
+    </style>
+<!--    <style name="AppNoTitleTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+<!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+<!--        <item name="colorPrimary">@color/colorPrimary</item>-->
+<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+<!--        <item name="colorAccent">@color/colorAccent</item>-->
+<!--    </style>-->
+
+    <style name="EditText" parent="EditTextBase">
+        <item name="android:layout_height">?attr/xui_config_size_edittext_height</item>
+        <item name="android:textSize">?attr/xui_config_size_edittext_input_text</item>
+        <item name="android:paddingLeft">?attr/xui_config_size_edittext_left_padding</item>
+        <item name="android:paddingRight">?attr/xui_config_size_edittext_left_padding</item>
+        <item name="android:textColor">@color/xui_config_color_edittext_textcolor</item>
+        <item name="android:textColorHint">@color/xui_config_color_edittext_hint_text</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <!--    登录按钮-->
+    <style name="commitBtn">
+        <item name="android:layout_height">@dimen/btnHeight</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/infoSize</item>
+        <item name="android:layout_marginLeft">@dimen/maginSize</item>
+        <item name="android:layout_marginRight">@dimen/maginSize</item>
+
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/btn_commit_selector</item>
+    </style>
+
+    <style name="ActionBarStyle" parent="@style/Widget.AppCompat.ActionBar">
+        <item name="titleTextStyle">@style/ToolbarTitle</item>
+        <item name="subtitleTextStyle">@style/ToolbarSubTitle</item>
+        <item name="background">?attr/colorPrimary</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+    </style>
+
+    <style name="SettingTheme" parent="XUITheme.Phone">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!--系统弹窗按钮样式-->
+        <item name="buttonStyle">@style/Button.AlertDialog</item>
+
+        <!--有Title-->
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">false</item>
+        <item name="actionBarStyle">@style/ActionBarStyle</item>
+    </style>
+
+    <style name="ToolbarTitle" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textSize">?attr/xui_actionbar_title_text_size</item>
+        <item name="android:textColor">@color/xui_config_color_white</item>
+    </style>
+
+    <style name="ToolbarSubTitle" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:textSize">?attr/xui_actionbar_sub_text_size</item>
+        <item name="android:textColor">@color/xui_config_color_white</item>
+    </style>
+
+    <!--DialogTheme，用于将Activity作为Dialog的主题-->
+    <style name="DialogTheme" parent="XUITheme.Phone">
+        <!--设置dialog的背景，此处为系统给定的透明值-->
+        <item name="android:windowBackground">@color/xui_config_color_transparent</item>
+        <!--Dialog的windowFrame框为无-->
+        <item name="android:windowFrame">@null</item>
+        <!--无标题-->
+        <item name="android:windowNoTitle">true</item>　　　　　
+        <!--是否浮现在activity之上-->
+        <item name="android:windowIsFloating">true</item>
+        <!--是否半透明-->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--是否有覆盖-->
+        <item name="android:windowContentOverlay">@null</item>
+        <!--设置Activity出现方式-->
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <!--背景是否模糊显示-->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+
+
+</resources>

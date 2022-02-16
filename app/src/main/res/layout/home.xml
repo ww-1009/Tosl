@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DAEAEF"
+    tools:context=".ChangePwdActivity">
+
+    <include layout = "@layout/navigation"
+        tools:ignore="ResourceCycle" />
+
+    <LinearLayout
+        android:id="@+id/change_new_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="250dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/change"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape"
+            android:textSize="23dp"
+            android:text="修改密码"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/change_new_password_again"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/change_new_password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape"
+            android:textSize="23dp"
+            android:text="注销"
+            />
+    </LinearLayout>
+
+
+</RelativeLayout>

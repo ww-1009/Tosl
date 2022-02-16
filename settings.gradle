@@ -1,0 +1,4 @@
+include ':xui_lib'
+include ':core'
+include ':app'
+rootProject.name='NanoDet'

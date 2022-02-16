@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DAEAEF"
+    tools:context=".ChangePwdActivity">
+
+    <include layout = "@layout/navigation"
+        tools:ignore="ResourceCycle" />
+
+    <LinearLayout
+        android:id="@+id/change_old_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/ed_old_pwd"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/editview"
+            android:hint="请输入您的原密码"
+            android:gravity="center"
+            android:textSize="23dp"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/change_new_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/change_old_pwd"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/ed_new_pwd1"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/editview"
+            android:hint="请输入您的新密码"
+            android:gravity="center"
+            android:inputType="textPassword"
+            android:textSize="23dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/change_new_password_again"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/change_new_password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/ed_new_pwd2"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/editview"
+            android:hint="请再次输入您的密码"
+            android:gravity="center"
+            android:inputType="textPassword"
+            android:textSize="23dp"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/change_sure"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/change_new_password_again"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/shape"
+        android:textSize="23dp"
+        android:text="确定"
+        android:onClick="change_sure"/>
+</RelativeLayout>

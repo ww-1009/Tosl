@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#DAEAEF"
+    android:gravity="center"
+    tools:context=".RegisterActivity">
+
+
+    <LinearLayout
+        android:id="@+id/regist_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/Add_Username"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/editview"
+            android:hint="请输入您的用户名"
+            android:gravity="center"
+            android:textSize="23dp"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/regist_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/regist_username"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/Add_Number"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/editview"
+            android:hint="请输入您的手机号"
+            android:gravity="center"
+            android:textSize="23dp"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/regist_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/regist_phone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/Add_Password1"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/editview"
+            android:hint="请输入您的密码"
+            android:gravity="center"
+            android:inputType="textPassword"
+            android:textSize="23dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/regist_passwordagain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/regist_password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+
+        <EditText
+            android:id="@+id/Add_Password2"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/editview"
+            android:hint="请再次输入您的密码"
+            android:gravity="center"
+            android:inputType="textPassword"
+            android:textSize="23dp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/shenfen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/regist_passwordagain"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+
+            <RadioButton
+                android:id="@+id/rb_consumer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="个人"
+                android:textSize="17dp"
+                android:checked="true"
+                />
+
+            <RadioButton
+                android:id="@+id/rb_designer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:text="机构"/>
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_register"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shenfen"
+        android:textSize="23dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape"
+        android:text="注册"
+        android:onClick="AddUserOnclick"/>
+
+</RelativeLayout>
