@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,13 +14,6 @@ import android.widget.Toast;
 import com.rangi.nanodet.person.personMsg;
 import com.rangi.nanodet.organization.orgMsg;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import com.rangi.nanodet.tool.Mysql;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 
 
 public class LoginActivity extends BaseActivity {
@@ -29,10 +21,6 @@ public class LoginActivity extends BaseActivity {
     Button loginb;
     SQLiteDatabase db;
     RadioGroup rdg;
-
-    //连接数据库
-    Mysql mysql;
-
 
     //标识符
     int index;

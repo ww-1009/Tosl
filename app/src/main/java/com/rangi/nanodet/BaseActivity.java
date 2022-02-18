@@ -14,6 +14,7 @@ public class BaseActivity extends AppCompatActivity {
     private TextView mTvtitler;
     private ImageView mIvback;
     private ImageView mIvuser;
+    String name;
 
     @SuppressLint("WrongConstant")
     public void initNavBar(boolean back, String title, boolean user){

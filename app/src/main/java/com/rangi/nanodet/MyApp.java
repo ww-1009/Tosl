@@ -63,6 +63,7 @@ public class MyApp extends Application {
 
         }
     }
+
     private String name;
     private String pwd;
     private String number;

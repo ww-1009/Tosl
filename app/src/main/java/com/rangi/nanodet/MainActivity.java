@@ -2,7 +2,6 @@ package com.rangi.nanodet;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.camera.core.CameraX;
 import androidx.camera.core.ImageAnalysis;
 import androidx.camera.core.ImageAnalysisConfig;
@@ -40,7 +39,6 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.rangi.nanodet.person.personMsg;
-import com.rangi.nanodet.organization.orgMsg;
 import com.xuexiang.xui.adapter.simple.XUISimpleAdapter;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.widget.popupwindow.popup.XUIListPopup;
@@ -49,6 +47,9 @@ import com.xuexiang.xui.widget.popupwindow.popup.XUIPopup;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -152,8 +153,39 @@ public class MainActivity extends BaseActivity {
         findViewById(R.id.send).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, personMsg.class);
                 String input=show.getText().toString();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Class.forName("com.mysql.jdbc.Driver");
+                            java.sql.Connection cn= DriverManager.getConnection("jdbc:mysql://106.15.179.74/eladmin","root","Ww-20011009");
+                            String sql = "insert into sys_user_message (message_id,user_id,user_name,message,send_to) values(?, ?, ?, ?, ?)";
+                            //4. 创建PreparedStatement对象
+                            PreparedStatement ps = cn.prepareStatement(sql);
+                            MyApp app =(MyApp) getApplication();
+                            String name= app.getName();
+                            int index= app.getIndex();
+                            System.out.println(name);
+                            ps.setInt(1, 2);
+                            ps.setInt(2, index);
+                            ps.setString(3, name);
+                            ps.setString(4, input);
+                            ps.setString(5, "admin");
+//                            ps.setInt(6, 25);
+                            int i = ps.executeUpdate();
+                            ps.close();
+                            cn.close();
+                            System.out.println("连接数据库成功");
+                        } catch (ClassNotFoundException e) {
+                            System.out.println("连接数据库失败");
+                            e.printStackTrace();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+                Intent intent = new Intent(MainActivity.this, personMsg.class);
                 intent.putExtra("date",input);
                 System.out.println(input);
                 MainActivity.this.setResult(3, intent);
@@ -188,10 +220,10 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    private void updateTransform() {
-        Matrix matrix = new Matrix();
-        float[] rotations = {0, 90, 180, 270};
-    }
+//    private void updateTransform() {
+//        Matrix matrix = new Matrix();
+//        float[] rotations = {0, 90, 180, 270};
+//    }
 
     private void startCamera() {
         CameraX.unbindAll();
@@ -345,10 +377,10 @@ public class MainActivity extends BaseActivity {
     }
 
 
-    protected String getModelName() {
-        String modelName = "NanoDet";
-        return USE_GPU ? "GPU: " + modelName : "CPU: " + modelName;
-    }
+//    protected String getModelName() {
+//        String modelName = "NanoDet";
+//        return USE_GPU ? "GPU: " + modelName : "CPU: " + modelName;
+//    }
 
     @Override
     protected void onDestroy() {
