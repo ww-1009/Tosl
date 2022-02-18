@@ -32,10 +32,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Size;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.inputmethod.InputMethodManager;
+
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -55,6 +53,8 @@ import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
+
+
 
 public class MainActivity extends BaseActivity {
     String st="abc";
@@ -153,8 +153,9 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, personMsg.class);
-                intent.putExtra("date",show.getText().toString());
-                System.out.println(show.getText().toString());
+                String input=show.getText().toString();
+                intent.putExtra("date",input);
+                System.out.println(input);
                 MainActivity.this.setResult(3, intent);
                 //关闭Activity
                 Fg=true;
@@ -173,6 +174,8 @@ public class MainActivity extends BaseActivity {
 
         initNavBar(true,"识别窗口",true);
     }
+
+
     private void listenKeyboard() {
         // TODO Auto-generated method stub
         detailMainRL = (LinearLayout) findViewById(R.id.root_layout);
@@ -468,4 +471,6 @@ public class MainActivity extends BaseActivity {
             });
         }
     }
+
+
 }

@@ -11,6 +11,21 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.squareup.okhttp.FormEncodingBuilder;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.Response;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
+
 
 public class RegisterActivity extends AppCompatActivity {
     EditText addname,addpwd1,addpwd2,addnumber;
@@ -55,6 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
             if(!(number.length()==11)){
                 Toast.makeText(this,"请输入正确的手机号",Toast.LENGTH_SHORT).show();
             }else if (pwd1.equals(pwd2)) {
+
                 //录入数据库
                 if(index == 0){
                     //个人
@@ -106,4 +122,5 @@ public class RegisterActivity extends AppCompatActivity {
         String sql_designer = "insert into designer values(null,'"+name+"','"+pwd+"','"+number+"')";
         db.execSQL(sql_designer);
     }
+
 }

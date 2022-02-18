@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,12 +15,25 @@ import android.widget.Toast;
 import com.rangi.nanodet.person.personMsg;
 import com.rangi.nanodet.organization.orgMsg;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import com.rangi.nanodet.tool.Mysql;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+
 
 public class LoginActivity extends BaseActivity {
     EditText etname,etpwd;
     Button loginb;
     SQLiteDatabase db;
     RadioGroup rdg;
+
+    //连接数据库
+    Mysql mysql;
+
+
     //标识符
     int index;
     String sql;
@@ -44,6 +58,7 @@ public class LoginActivity extends BaseActivity {
             public void onClick(View v){
                 //Intent是一种运行时绑定（run-time binding）机制，它能在程序运行过程中连接两个不同的组件。
                 //在存放资源代码的文件夹下下，
+//                getConnection();
                 Intent i = new Intent(LoginActivity.this , RegisterActivity.class);
                 //启动
                 startActivity(i);
@@ -64,6 +79,7 @@ public class LoginActivity extends BaseActivity {
         });
 
     }
+
     public void LoginOnClick(View view){
         //获取用户输入账号
         String name = etname.getText().toString();
@@ -111,6 +127,7 @@ public class LoginActivity extends BaseActivity {
             }
         }
     }
+
 
     //数据库信息比对
     public boolean ctrInfo(String name,String pwd){
