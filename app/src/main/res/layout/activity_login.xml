@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DAEAEF"
+    android:background="#d8e0e8"
     tools:context=".LoginActivity">
 
 
@@ -17,39 +17,48 @@
         android:padding="10dp"
         android:gravity="center">
 
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="15dp">
-
-            <EditText
+            android:padding="15dp"
+            android:layout_margin="5dp"
+            android:gravity="start"
+            android:textAlignment="viewStart"
+            android:textDirection="locale">
+            <com.xuexiang.xui.widget.edittext.ClearEditText
                 android:id="@+id/et_name"
                 android:layout_width="match_parent"
-                android:background="@drawable/editview"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="23dp"
-                android:hint="请输入用户名" />
-        </LinearLayout>
+                android:hint="输入用户名"
+                android:textSize="18dp"
+                android:textAlignment="viewStart" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <LinearLayout
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical"
-            android:padding="15dp">
+            android:layout_margin="5dp"
+            android:layout_marginTop="5dp"
+            android:padding="15dp"
+            android:gravity="start"
+            android:textAlignment="viewStart"
+            android:textDirection="locale">
 
-            <EditText
+            <com.xuexiang.xui.widget.edittext.PasswordEditText
                 android:id="@+id/et_pwd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:password="true"
-                android:textSize="23dp"
-                android:background="@drawable/editview"
-                android:hint="请输入密码" />
-        </LinearLayout>
+                android:gravity="start"
+                android:hint="输入密码"
+                android:textSize="18dp"
+                android:inputType="textPassword"
+                android:layoutDirection="locale"
+                android:textAlignment="viewStart"
+                app:pet_enableIconAlpha="true"
+                app:pet_isAsteriskStyle="false" />
+        </com.google.android.material.textfield.TextInputLayout>
         <LinearLayout
             android:id="@+id/bottom1"
             android:layout_width="match_parent"

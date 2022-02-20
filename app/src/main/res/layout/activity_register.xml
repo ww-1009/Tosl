@@ -5,93 +5,98 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#DAEAEF"
+    android:background="#d8e0e8"
     android:gravity="center"
     tools:context=".RegisterActivity">
 
-
-    <LinearLayout
+<!--    android:layout_below="@id/Login_name"-->
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/regist_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:layout_marginTop="30dp"
-        android:gravity="center">
-
-        <EditText
+        android:padding="5dp"
+        android:gravity="start"
+        android:textAlignment="viewStart"
+        android:textDirection="locale">
+        <com.xuexiang.xui.widget.edittext.ClearEditText
             android:id="@+id/Add_Username"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/editview"
-            android:hint="请输入您的用户名"
-            android:gravity="center"
-            android:textSize="23dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="输入您的用户名"
+            android:textSize="18dp"
+            android:textAlignment="viewStart" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-            />
-    </LinearLayout>
-
-    <LinearLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/regist_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/regist_username"
-        android:layout_marginTop="20dp"
-        android:gravity="center">
-
-        <EditText
+        android:layout_marginTop="15dp"
+        android:padding="5dp"
+        android:gravity="start"
+        android:textAlignment="viewStart"
+        android:textDirection="locale">
+        <com.xuexiang.xui.widget.edittext.ClearEditText
             android:id="@+id/Add_Number"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/editview"
-            android:hint="请输入您的手机号"
-            android:gravity="center"
-            android:textSize="23dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="输入您的手机号"
+            android:textSize="18dp"
+            android:textAlignment="viewStart" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-            />
-    </LinearLayout>
 
-    <LinearLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/regist_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/regist_phone"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <EditText
+        android:layout_marginTop="15dp"
+        android:padding="5dp"
+        android:gravity="start"
+        android:textAlignment="viewStart"
+        android:textDirection="locale">
+        <com.xuexiang.xui.widget.edittext.ClearEditText
             android:id="@+id/Add_Password1"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/editview"
-            android:hint="请输入您的密码"
-            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="输入您的密码"
+            android:textSize="18dp"
             android:inputType="textPassword"
-            android:textSize="23dp"
-            />
-    </LinearLayout>
-    <LinearLayout
+            android:textAlignment="viewStart" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/regist_passwordagain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/regist_password"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-
-        <EditText
+        android:layout_marginTop="15dp"
+        android:padding="5dp"
+        android:gravity="start"
+        android:textAlignment="viewStart"
+        android:textDirection="locale">
+        <com.xuexiang.xui.widget.edittext.ClearEditText
             android:id="@+id/Add_Password2"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/editview"
-            android:hint="请再次输入您的密码"
-            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="再次输入您的密码"
+            android:textSize="18dp"
             android:inputType="textPassword"
-            android:textSize="23dp"
-            />
-    </LinearLayout>
+            android:textAlignment="viewStart" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:id="@+id/shenfen"
