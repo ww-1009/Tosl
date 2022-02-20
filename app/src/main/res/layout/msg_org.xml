@@ -88,15 +88,21 @@
             android:id="@+id/input"
             style="@style/EditText.Normal"
             android:layout_width="300dp"
-            android:layout_height="42dp"
+            android:layout_height="32dp"
             android:singleLine="true" />
 
-        <Button
-            android:id="@+id/send"
+        <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+            style="@style/RoundButton.Auto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/send"
+            android:gravity="center"
+            android:text="发送"
             android:layout_marginLeft="10dp"
-            android:text="发送" />
+            app:rb_isRadiusAdjustBounds="true"
+            android:textColor="@color/xui_default_round_btn_white_text"
+            app:rb_backgroundColor="@color/xui_round_btn_blow_bg"
+            app:rb_borderColor="@color/xui_round_btn_blow_bg" />
 
     </LinearLayout>
     <LinearLayout

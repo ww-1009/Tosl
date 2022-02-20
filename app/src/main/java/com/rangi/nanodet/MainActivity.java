@@ -159,7 +159,7 @@ public class MainActivity extends BaseActivity {
                     public void run() {
                         try {
                             Class.forName("com.mysql.jdbc.Driver");
-                            java.sql.Connection cn= DriverManager.getConnection("jdbc:mysql://106.15.179.74/eladmin","root","Ww-20011009");
+                            java.sql.Connection cn= DriverManager.getConnection("jdbc:mysql://106.14.35.94/eladmin","eladmin","123456");
                             String sql = "insert into sys_user_message (message_id,user_id,user_name,message,send_to) values(?, ?, ?, ?, ?)";
                             //4. 创建PreparedStatement对象
                             PreparedStatement ps = cn.prepareStatement(sql);
