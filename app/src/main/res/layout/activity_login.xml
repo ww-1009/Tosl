@@ -7,12 +7,26 @@
     android:background="#d8e0e8"
     tools:context=".LoginActivity">
 
-
+    <LinearLayout
+        android:id="@+id/Title_photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:padding="10dp"
+        >
+        <ImageView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:background="@drawable/icn"
+            android:textSize="40dp" />
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/edittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/Title_photo"
         android:orientation="vertical"
         android:padding="10dp"
         android:gravity="center">
@@ -20,6 +34,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:padding="15dp"
             android:layout_margin="5dp"
             android:gravity="start"

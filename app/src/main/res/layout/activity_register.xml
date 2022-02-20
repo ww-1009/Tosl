@@ -9,12 +9,25 @@
     android:gravity="center"
     tools:context=".RegisterActivity">
 
-<!--    android:layout_below="@id/Login_name"-->
+    <LinearLayout
+        android:id="@+id/Login_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        >
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/icn"
+            android:textSize="40dp" />
+    </LinearLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/regist_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:layout_below="@id/Login_name"
         android:layout_marginTop="30dp"
         android:padding="5dp"
         android:gravity="start"
