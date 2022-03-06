@@ -4,7 +4,7 @@
  **/
 ext.deps = [:]
 def versions = [:]
-versions.android_gradle_plugin = "3.6.1"
+versions.android_gradle_plugin = "4.1.0"
 versions.android_maven_gradle_plugin = "2.0"
 versions.gradle_bintray_plugin = "1.8.0"
 versions.booster = "3.1.0"
@@ -21,9 +21,10 @@ versions.rxjava2 = "2.2.20"
 versions.rxandroid = "2.1.1"
 versions.rxbinding = "2.2.0"
 versions.butterknife = "10.1.0"
-versions.runner = "1.0.2"
+versions.runner = "1.2.0"
 versions.gson = "2.8.5"
 versions.okhttp3 = "3.12.12"
+versions.leakcanary = "2.6"
 
 def deps = [:]
 
@@ -51,13 +52,19 @@ butterknife.compiler = "com.jakewharton:butterknife-compiler:$versions.butterkni
 
 deps.butterknife = butterknife
 
+def espresso = [:]
+espresso.core = "androidx.test.espresso:espresso-core:$versions.espresso"
+espresso.contrib = "androidx.test.espresso:espresso-contrib:$versions.espresso"
+espresso.intents = "androidx.test.espresso:espresso-intents:$versions.espresso"
+deps.espresso = espresso
+
 deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
 deps.android_maven_gradle_plugin = "com.github.dcendents:android-maven-gradle-plugin:$versions.android_maven_gradle_plugin"
 deps.gradle_bintray_plugin = "com.jfrog.bintray.gradle:gradle-bintray-plugin:$versions.gradle_bintray_plugin"
 deps.glide = "com.github.bumptech.glide:glide:$versions.glide"
 deps.constraint_layout = "com.android.support.constraint:constraint-layout:$versions.constraint_layout"
 deps.junit = "junit:junit:$versions.junit"
-deps.runner = 'androidx.test:runner:1.1.0'
+deps.runner = 'androidx.test:runner:1.2.0'
 deps.rxjava2 = "io.reactivex.rxjava2:rxjava:$versions.rxjava2"
 deps.rxandroid = "io.reactivex.rxjava2:rxandroid:$versions.rxandroid"
 deps.rxbinding = "com.jakewharton.rxbinding2:rxbinding:$versions.rxbinding"
