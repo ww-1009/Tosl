@@ -83,7 +83,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> implements
 
     @Override
     protected void initViews() {
-        mCountDownHelper = new CountDownButtonHelper(binding.btnGetVerifyCode, 60);
+//        mCountDownHelper = new CountDownButtonHelper(binding.btnGetVerifyCode, 60);
         //隐私政策弹窗
         if (!SettingUtils.isAgreePrivacy()) {
             Utils.showPrivacyDialog(getContext(), (dialog, which) -> {
@@ -102,7 +102,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> implements
 
     @Override
     protected void initListeners() {
-        binding.btnGetVerifyCode.setOnClickListener(this);
+//        binding.btnGetVerifyCode.setOnClickListener(this);
         binding.btnLogin.setOnClickListener(this);
         binding.tvOtherLogin.setOnClickListener(this);
         binding.tvForgetPassword.setOnClickListener(this);
@@ -126,11 +126,11 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> implements
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if (id == R.id.btn_get_verify_code) {
-            if (binding.etPhoneNumber.validate()) {
-                getVerifyCode(binding.etPhoneNumber.getEditValue());
-            }
-        } else if (id == R.id.btn_login) {
+//        if (id == R.id.btn_get_verify_code) {
+//            if (binding.etPhoneNumber.validate()) {
+//                getVerifyCode(binding.etPhoneNumber.getEditValue());
+//            }
+        if (id == R.id.btn_login) {
             if (binding.etPhoneNumber.validate()) {
                 if (binding.etVerifyCode.validate()) {
                     loginByVerifyCode(binding.etPhoneNumber.getEditValue(), binding.etVerifyCode.getEditValue());

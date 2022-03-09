@@ -9,8 +9,8 @@ android {
     buildToolsVersion build_versions.build_tools
     defaultConfig {
         applicationId "com.rangi.nanodet"
-        minSdkVersion 21
-        targetSdkVersion 29
+        minSdkVersion 23
+        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -44,42 +44,42 @@ android {
             }
         }
 
-        debug {
-            storeFile file("./debug.jks")
-            storePassword "123456"
-            keyAlias "debug"
-            keyPassword "123456"
-        }
+//        debug {
+//            storeFile file("./debug.jks")
+//            storePassword "123456"
+//            keyAlias "debug"
+//            keyPassword "123456"
+//        }
     }
-    buildTypes {
-        release {
-            minifyEnabled true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            if (isNeedPackage.toBoolean()) {
-                signingConfig signingConfigs.release
-
-                Properties properties = new Properties()
-                properties.load(project.rootProject.file('local.properties').newDataInputStream())
-                def appID = properties.getProperty("APP_ID_UMENG")
-                if (appID != null) {
-                    buildConfigField "String", "APP_ID_UMENG", appID
-                } else {
-                    buildConfigField "String", "APP_ID_UMENG", '""'
-                }
-            } else {
-                signingConfig signingConfigs.debug
-                buildConfigField "String", "APP_ID_UMENG", '""'
-            }
-        }
-        debug {
-            debuggable true
-            minifyEnabled false
-
-            signingConfig signingConfigs.debug
-            buildConfigField "String", "APP_ID_UMENG", '""'
-        }
-    }
+//    buildTypes {
+//        release {
+//            minifyEnabled true
+//            shrinkResources true
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//            if (isNeedPackage.toBoolean()) {
+//                signingConfig signingConfigs.release
+//
+//                Properties properties = new Properties()
+//                properties.load(project.rootProject.file('local.properties').newDataInputStream())
+//                def appID = properties.getProperty("APP_ID_UMENG")
+//                if (appID != null) {
+//                    buildConfigField "String", "APP_ID_UMENG", appID
+//                } else {
+//                    buildConfigField "String", "APP_ID_UMENG", '""'
+//                }
+//            } else {
+//                signingConfig signingConfigs.debug
+//                buildConfigField "String", "APP_ID_UMENG", '""'
+//            }
+//        }
+//        debug {
+//            debuggable true
+//            minifyEnabled false
+//
+//            signingConfig signingConfigs.debug
+//            buildConfigField "String", "APP_ID_UMENG", '""'
+//        }
+//    }
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
@@ -127,16 +127,11 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation deps.androidx.multidex
-//    estImplementation deps.junit
     androidTestImplementation deps.runner
     androidTestImplementation deps.espresso.core
-//    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
-//    implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation project(path: ':core')
-    implementation files('src\\main\\jniLibs\\mysql-connector-java-5.1.49.jar')
-//    testImplementation 'junit:junit:4.12'
-//    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation files('src/main/jniLibs/mysql-connector-java-5.1.49.jar')
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation 'com.alibaba.android:vlayout:1.3.0'
     // Use the most recent version of CameraX, currently that is alpha04
@@ -160,9 +155,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.12.0'
 
     //XUI框架
-//    implementation project(':xui_lib')
     implementation 'com.github.xuexiangjys:XUI:1.1.8'
-//    implementation 'com.qmuiteam:qmui:1.2.0'
 
     //工具类
     implementation 'com.github.xuexiangjys.XUtil:xutil-core:2.0.0'
@@ -192,24 +185,16 @@ dependencies {
     //RxBinding的sdk
     implementation deps.rxbinding
     implementation 'com.github.xuexiangjys:RxUtil2:1.2.1'
-
     //PictureSelector图片选择
     implementation 'com.github.xuexiangjys.PictureSelector:picture-core:1.0.5'
-
     //下拉刷新
     implementation 'com.github.xuexiangjys.SmartRefreshLayout:refresh-header:1.1.5'
     implementation 'com.github.xuexiangjys.SmartRefreshLayout:refresh-layout:1.1.5'
-
     //列表侧滑菜单
     implementation 'com.yanzhenjie.recyclerview:support:1.3.2'
 
     //预加载占位控件
     implementation 'me.samlss:broccoli:1.0.0'
-
-//    //XVideo，太大，暂时去除
-//    implementation 'com.github.xuexiangjys:XVideo:1.0.2'
-//    implementation 'com.github.xuexiangjys:NiceVieoPlayer:3.0.3'
-
     //WebView
     implementation 'com.github.xuexiangjys.AgentWeb:agentweb-core:1.0.0'
     implementation 'com.github.xuexiangjys.AgentWeb:agentweb-download:1.0.0'//选填

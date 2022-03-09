@@ -9,7 +9,7 @@ public class Box {
     public float x0,y0,x1,y1;
     private int label;
     private float score;
-    private static String[] labels={"A", "B", "C", "D", "E", "F", "G", "hearSingle","iloveyou","ok","yearh","H", "I", "J",
+    private static String[] labels={"A", "B", "C", "D", "E", "F", "G", "比心","我爱你","好的","耶","H", "I", "J",
             "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
             "U", "V", "W", "X", "Y", "Z"};
     public Box(float x0,float y0, float x1, float y1, int label, float score){

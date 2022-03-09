@@ -60,8 +60,8 @@
     <string-array name="grid_titles_entry">
         <item>翻译</item>
         <item>地图</item>
-        <item>附近</item>
-        <item>夜宵</item>
+        <item>求救</item>
+        <item>会议</item>
 <!--        <item>水果</item>-->
 <!--        <item>药品</item>-->
 <!--        <item>蔬菜</item>-->
@@ -80,4 +80,10 @@
 <!--        <item>@color/app_color_theme_8</item>-->
     </array>
 
+    <!--    dialog-->
+    <string-array name="sos_entry">
+        <item>急救 120</item>
+        <item>消防 119</item>
+        <item>警务 110</item>
+    </string-array>
 </resources>

@@ -2,7 +2,6 @@ package com.rangi.nanodet.fragment.news.person;
 
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -22,15 +21,10 @@ import com.baidu.speech.EventListener;
 import com.baidu.speech.EventManager;
 import com.baidu.speech.EventManagerFactory;
 import com.baidu.speech.asr.SpeechConstant;
-import com.rangi.nanodet.core.BaseActivity;
-//import com.rangi.nanodet.MainActivity;
 import com.rangi.nanodet.R;
 import com.rangi.nanodet.core.BaseFragment;
-//import com.rangi.nanodet.databinding.FragmentSignBinding;
 import com.rangi.nanodet.databinding.FragmentPersonmsgBinding;
 import com.rangi.nanodet.fragment.news.RecogeFragment;
-import com.rangi.nanodet.fragment.other.AboutFragment;
-import com.rangi.nanodet.utils.XToastUtils;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xrouter.annotation.AutoWired;
@@ -51,12 +45,14 @@ import java.util.regex.Pattern;
 
 @Page
 public class personMsg extends BaseFragment<FragmentPersonmsgBinding> implements View.OnClickListener,EventListener {
-
-    public static final String KEY_INPUT = "recoge_input";
+    public static final String KEY_BACK_DATA = "NULL";
+    public static final String KEY_INPUT = "NULL";
 
     /**
      * 自动注入参数，不能是private
      */
+    @AutoWired(name = KEY_BACK_DATA)
+    String back_input;
     @AutoWired(name = KEY_INPUT)
     String recoge_input;
 
@@ -89,7 +85,6 @@ public class personMsg extends BaseFragment<FragmentPersonmsgBinding> implements
     protected Button startBtn;//开始识别  一直不说话会自动停止，需要再次打开
     private EventManager asr;//语音识别核心库
     MsgAdapter adapter;
-//    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
 
     @Override
     protected void initViews() {
@@ -157,8 +152,7 @@ public class personMsg extends BaseFragment<FragmentPersonmsgBinding> implements
                     input_text.setText("");
                 }
         }else if (id==R.id.btnStartRecognize){
-//            openNewPage(AboutFragment.class);
-            openNewPage(RecogeFragment.class,RecogeFragment.KEY_TITLE_NAME,"识别窗口");
+            openPageForResult(RecogeFragment.class, null, 200);
         }
     }
     @Override
@@ -208,6 +202,7 @@ public class personMsg extends BaseFragment<FragmentPersonmsgBinding> implements
 
     @Override
     public void onEvent(String name, String params, byte[] data, int offset, int length) {
+        System.out.println("onEvent");
         if (name.equals(SpeechConstant.CALLBACK_EVENT_ASR_PARTIAL)) {
             // 识别相关的结果都在这里
             if (params == null || params.isEmpty()) {
@@ -232,6 +227,7 @@ public class personMsg extends BaseFragment<FragmentPersonmsgBinding> implements
     @Override
     public void onDestroy() {
         super.onDestroy();
+        System.out.println("onDestroy");
         //发送取消事件
         asr.send(SpeechConstant.ASR_CANCEL, "{}", null, 0, 0);
         //退出事件管理器
@@ -285,6 +281,25 @@ public class personMsg extends BaseFragment<FragmentPersonmsgBinding> implements
                 doPopup.dismiss();
             });
 
+        }
+    }
+
+    @Override
+    public void onFragmentResult(int requestCode, int resultCode, Intent data) {
+        super.onFragmentResult(requestCode, resultCode, data);
+        if(data==null){
+            return;
+        }
+        Bundle extras = data.getExtras();
+        String info = extras.getString(RecogeFragment.KEY_BACK_DATA);
+        System.out.println("12"+info);
+        if (info!=null) {
+            Msg msg = new Msg(info, Msg.TYPE_SEND);
+            msgList.add(msg);
+            //当有新消息时，调用notifyItemInserted方法刷新listview中的显示
+            adapter.notifyItemInserted(msgList.size() - 1);
+            //将listview定位到最后一行
+            mRecyclerView.scrollToPosition(msgList.size() - 1);
         }
     }
 }

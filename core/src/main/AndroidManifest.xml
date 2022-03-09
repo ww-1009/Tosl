@@ -12,13 +12,13 @@
     <application>
         <meta-data
             android:name="com.baidu.speech.APP_ID"
-            android:value="24880073"/>
+            android:value="25980786"/>
 
         <meta-data
                 android:name="com.baidu.speech.API_KEY"
-                android:value="PpEkSsD0cvWeGw8BCZvpK8IP"/>
+                android:value="Uv3C4vtXDNwuCUBsrt5vcF8T"/>
         <meta-data
                 android:name="com.baidu.speech.SECRET_KEY"
-                android:value="4GWi90NMhptAwn5nn09Zi3xHz6GLxky0"/>
+                android:value="zwwU8SBuiIVeymktA7bnB3yWGSH5UM03"/>
     </application>
 </manifest>

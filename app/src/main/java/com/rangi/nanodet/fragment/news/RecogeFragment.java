@@ -22,12 +22,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-//import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.camera.core.CameraX;
 import androidx.camera.core.ImageAnalysis;
 import androidx.camera.core.ImageAnalysisConfig;
@@ -39,13 +36,10 @@ import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.LifecycleOwner;
 
 import com.rangi.nanodet.Box;
-//import com.rangi.nanodet.MyApp;
 import com.rangi.nanodet.NanoDet;
 import com.rangi.nanodet.R;
 import com.rangi.nanodet.core.BaseFragment;
 import com.rangi.nanodet.databinding.FragmentRecogeBinding;
-//import com.rangi.nanodet.person.personMsg;
-//import com.xuexiang.xaop.annotation.SingleClick;
 import com.rangi.nanodet.fragment.news.person.personMsg;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
@@ -59,9 +53,13 @@ import com.xuexiang.xui.widget.popupwindow.popup.XUIPopup;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -71,7 +69,8 @@ import static com.xuexiang.xutil.XUtil.runOnUiThread;
 
 @Page
 public class RecogeFragment extends BaseFragment<FragmentRecogeBinding> implements View.OnClickListener{
-    public static final String KEY_TITLE_NAME = "title_name";
+//    public static final String KEY_TITLE_NAME = "title_name";
+    public static final String KEY_BACK_DATA = "NULL";
     String st="abc";
     boolean Fg=true;
     boolean Fl=true;
@@ -102,16 +101,14 @@ public class RecogeFragment extends BaseFragment<FragmentRecogeBinding> implemen
     private int n=2;
     double total_fps = 0;
     int fps_count = 0;
-
-    //    String st = box.getLabel();
     protected Bitmap mutableBitmap;
     ExecutorService detectService = Executors.newSingleThreadExecutor();
 
     /**
      * 自动注入参数，不能是private
      */
-    @AutoWired(name = KEY_TITLE_NAME)
-    String title;
+    @AutoWired(name = KEY_BACK_DATA)
+    String back_input;
 
 
     @NonNull
@@ -129,6 +126,7 @@ public class RecogeFragment extends BaseFragment<FragmentRecogeBinding> implemen
 
     @Override
     protected String getPageTitle() {
+        String title="识别窗口";
         return title;
     }
 
@@ -174,24 +172,25 @@ public class RecogeFragment extends BaseFragment<FragmentRecogeBinding> implemen
                 public void run() {
                     try {
                         Class.forName("com.mysql.jdbc.Driver");
-                        java.sql.Connection cn= DriverManager.getConnection("jdbc:mysql://106.14.35.94/eladmin","eladmin","123456");
-                        String sql = "insert into sys_user_message (message_id,user_id,user_name,message,send_to) values(?, ?, ?, ?, ?)";
+                        Connection cn= DriverManager.getConnection("jdbc:mysql://106.14.35.94/eladmin","eladmin","123456");
+                        String sql = "insert into sys_user_message (message_id,user_id,user_name,message,create_by,send_to,create_time) values(?, ?, ?, ?, ?,?,?)";
                         //4. 创建PreparedStatement对象
+                        Date date = new Date();//获得系统时间.
+                        String nowTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(System.currentTimeMillis());//将时间格式转换成符合Timestamp要求的格式.
+                        Timestamp goodsC_date =Timestamp.valueOf(nowTime);//把时间转换
+                        System.out.println(goodsC_date);
                         PreparedStatement ps = cn.prepareStatement(sql);
-//                            MyApp app =(MyApp) getApplication();
-//                            String name= app.getName();
-//                            int index= app.getIndex();
-//                            System.out.println(name);
-                        ps.setInt(1, 2);
-//                            ps.setInt(2, index);
-//                            ps.setString(3, name);
+                        ps.setInt(1, 0);
+                        ps.setInt(2, 2);
+                        ps.setString(3, "knowu");
                         ps.setString(4, input);
-                        ps.setString(5, "admin");
-//                            ps.setInt(6, 25);
-//                        int i = ps.executeUpdate();
+                        ps.setString(5, "cyf");
+                        ps.setString(6, "knowu");
+                        ps.setTimestamp(7, goodsC_date);
+                        int i = ps.executeUpdate();
+                        System.out.println("连接数据库成功");
                         ps.close();
                         cn.close();
-                        System.out.println("连接数据库成功");
                     } catch (ClassNotFoundException e) {
                         System.out.println("连接数据库失败");
                         e.printStackTrace();
@@ -202,8 +201,10 @@ public class RecogeFragment extends BaseFragment<FragmentRecogeBinding> implemen
             }).start();
             System.out.println(input);
             Fg=true;
-            openNewPage(personMsg.class,personMsg.KEY_INPUT,input);
-//
+            Intent intent = new Intent();
+            intent.putExtra(KEY_BACK_DATA,input);
+            setFragmentResult(200,intent);
+            popToBack();
         }else if(id==R.id.btn_history){
             history();
             historyPopup.setAnimStyle(XUIPopup.ANIM_GROW_FROM_CENTER);
@@ -233,25 +234,7 @@ public class RecogeFragment extends BaseFragment<FragmentRecogeBinding> implemen
         threshold = 0.4f;
         nms_threshold = 0.6f;
 //        final String format = "Thresh: %.2f, NMS: %.2f";
-
     }
-
-
-//    public void listenKeyboard() {
-//        // TODO Auto-generated method stub
-//        heightDiff = detailMainRL.getRootView().getHeight() - detailMainRL.getHeight();
-//        if (heightDiff > detailMainRL.getRootView().getHeight()/3)
-//        { // 说明键盘是弹出状态
-//            Fg=false;
-//        } else{
-//            Fg=true;
-//        }
-//    }
-
-//    private void updateTransform() {
-//        Matrix matrix = new Matrix();
-//        float[] rotations = {0, 90, 180, 270};
-//    }
 
     private void startCamera() {
         CameraX.unbindAll();
@@ -266,8 +249,6 @@ public class RecogeFragment extends BaseFragment<FragmentRecogeBinding> implemen
         preview.setOnPreviewOutputUpdateListener(new Preview.OnPreviewOutputUpdateListener() {
             @Override
             public void onUpdated(Preview.PreviewOutput output) {
-//                listenKeyboard();//监听键盘
-        //                updateTransform();
             }
         });
         DetectAnalyzer detectAnalyzer = new DetectAnalyzer();
@@ -387,14 +368,12 @@ public class RecogeFragment extends BaseFragment<FragmentRecogeBinding> implemen
         boxPaint.setStyle(Paint.Style.STROKE);
         boxPaint.setStrokeWidth(4 * mutableBitmap.getWidth() / 800.0f);
         boxPaint.setTextSize(40 * mutableBitmap.getWidth() / 800.0f);
-//        listenKeyboard();
         for (Box box : results) {
             boxPaint.setColor(box.getColor());
             boxPaint.setStyle(Paint.Style.FILL);
             canvas.drawText(box.getLabel() + String.format(Locale.CHINESE, " %.3f", box.getScore()), box.x0 + 3, box.y0 + 40 * mutableBitmap.getWidth() / 1000.0f, boxPaint);
             if (Fg&&Fl){
                 st=box.getLabel();
-
                 show.setText(old+st);
             }
 
@@ -416,42 +395,6 @@ public class RecogeFragment extends BaseFragment<FragmentRecogeBinding> implemen
         super.onDestroy();
     }
 
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        for (int result : grantResults) {
-            if (result != PackageManager.PERMISSION_GRANTED) {
-//                Toast.makeText(this, "Camera Permission!", Toast.LENGTH_SHORT).show();
-//                this.finish();
-                System.out.println("443");
-                openNewPage(personMsg.class);
-            }
-        }
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (data == null) {
-           return;
-        }
-        detectPhoto.set(true);
-        Bitmap image = getPicture(data.getData());
-        if (image == null) {
-//            Toast.makeText(this, "Photo is null", Toast.LENGTH_SHORT).show();
-            openNewPage(personMsg.class);
-            System.out.println("458");
-            return;
-        }
-        Bitmap mutableBitmap = image.copy(Bitmap.Config.ARGB_8888, true);
-
-        Box[] result = NanoDet.detect(image, threshold, nms_threshold);
-
-        mutableBitmap = drawBoxRects(mutableBitmap, result);
-        binding.imageView.setImageBitmap(mutableBitmap);
-    }
 
     public Bitmap getPicture(Uri selectedImage) {
         String[] filePathColumn = {MediaStore.Images.Media.DATA};

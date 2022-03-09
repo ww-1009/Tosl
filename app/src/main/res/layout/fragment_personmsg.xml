@@ -63,12 +63,6 @@
             android:textSize="9dp"
             app:rb_isRadiusAdjustBounds="true" />
 
-<!--        <ImageButton-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="2dp"-->
-<!--            android:clickable="false"-->
-<!--            android:src="@drawable/btn_add" />-->
 
     </LinearLayout>
 

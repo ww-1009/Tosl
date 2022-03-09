@@ -61,12 +61,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="36dp"
                 android:hint="@string/tip_please_input_phone_number"
-                android:inputType="number"
+
                 app:met_clearButton="true"
                 app:met_errorMessage="@string/tip_phone_number_error"
                 app:met_floatingLabel="normal"
-                app:met_floatingLabelText="@string/title_phone_number"
-                app:met_regexp="@string/regex_phone_number" />
+                app:met_floatingLabelText="@string/title_phone_number"/>
+<!--                app:met_regexp="@string/regex_phone_number" -->
+<!--            android:inputType="number"-->
 
         </FrameLayout>
 
@@ -90,30 +91,31 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="36dp"
                 android:hint="@string/hint_please_input_verify_code"
-                android:inputType="number"
+
                 app:met_clearButton="false"
                 app:met_errorMessage="@string/tip_verify_code_error"
                 app:met_floatingLabel="normal"
-                app:met_floatingLabelText="@string/lab_verify_code"
-                app:met_maxCharacters="4"
-                app:met_regexp="@string/regex_verify_code" />
+                app:met_floatingLabelText="@string/lab_verify_code"/>
+<!--            android:inputType="number"-->
+<!--                app:met_regexp="@string/regex_verify_code" -->
+<!--            app:met_maxCharacters="4"-->
 
-            <com.xuexiang.xui.widget.button.roundbutton.RoundButton
-                android:id="@+id/btn_get_verify_code"
-                style="@style/RoundButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:paddingStart="10dp"
-                android:paddingTop="3dp"
-                android:paddingEnd="10dp"
-                android:paddingBottom="3dp"
-                android:text="@string/action_get_verify_code"
-                android:textColor="@color/selector_round_button_main_theme_color"
-                android:textSize="13sp"
-                app:rb_borderColor="@color/selector_round_button_main_theme_color"
-                app:rb_borderWidth="1.5dp"
-                app:rb_radius="15dp" />
+<!--            <com.xuexiang.xui.widget.button.roundbutton.RoundButton-->
+<!--                android:id="@+id/btn_get_verify_code"-->
+<!--                style="@style/RoundButton"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="end"-->
+<!--                android:paddingStart="10dp"-->
+<!--                android:paddingTop="3dp"-->
+<!--                android:paddingEnd="10dp"-->
+<!--                android:paddingBottom="3dp"-->
+<!--                android:text="@string/action_get_verify_code"-->
+<!--                android:textColor="@color/selector_round_button_main_theme_color"-->
+<!--                android:textSize="13sp"-->
+<!--                app:rb_borderColor="@color/selector_round_button_main_theme_color"-->
+<!--                app:rb_borderWidth="1.5dp"-->
+<!--                app:rb_radius="15dp" />-->
 
         </FrameLayout>
 

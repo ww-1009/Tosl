@@ -17,12 +17,11 @@
 
 package com.rangi.nanodet.fragment.news;
 
+
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.alibaba.android.vlayout.layout.GridLayoutHelper;
@@ -44,6 +43,7 @@ import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.adapter.simple.AdapterItem;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner;
+import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xui.widget.imageview.ImageLoader;
 import com.xuexiang.xui.widget.imageview.RadiusImageView;
 
@@ -115,15 +115,19 @@ public class NewsFragment extends BaseFragment<FragmentNewsBinding> {
                             openNewPage(personMsg.class);
                         }else if (item.getTitle().toString().equals("地图")){
                             Utils.goWeb(getContext(), "https://map.baidu.com/mobile/webapp/index/index/#index/index/foo=bar/vt=map");
+                        }else if (item.getTitle().toString().equals("求救")){
+//                            Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:120"));
+//                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                            startActivity(intent);
+                            showSingleChoiceDialog();
                         }
-//                        XToastUtils.toast("点击了：" + item.getTitle());
-                        // 注意: 这里由于NewsFragment是使用Viewpager加载的，并非使用XPage加载的，因此没有承载Activity， 需要使用openNewPage。
-//                        openNewPage(GridItemFragment.class, GridItemFragment.KEY_TITLE_NAME, item.getTitle());
 
                     });
                 }
             }
         };
+
+
 
         //资讯的标题
         SingleDelegateAdapter titleAdapter = new SingleDelegateAdapter(R.layout.adapter_title_item) {
@@ -196,6 +200,21 @@ public class NewsFragment extends BaseFragment<FragmentNewsBinding> {
             }, 1000);
         });
         binding.refreshLayout.autoRefresh();//第一次进入触发自动刷新，演示效果
+    }
+
+    private void showSingleChoiceDialog() {
+        new MaterialDialog.Builder(getContext())
+                .title(R.string.sos_dialog)
+                .items(R.array.sos_entry)
+                .itemsCallbackSingleChoice(
+                        0,
+                        (dialog, itemView, which, text) -> {
+                            XToastUtils.toast(text+"选择成功，请在原地等待救援");
+                            return true;
+                        })
+                .positiveText(R.string.lab_choice)
+                .negativeText(R.string.lab_cancel)
+                .show();
     }
 
 }

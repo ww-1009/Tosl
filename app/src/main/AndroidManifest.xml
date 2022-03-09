@@ -5,6 +5,7 @@
 
     <!--进程杀死-->
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
         android:name=".MyApp"
@@ -19,7 +20,8 @@
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="adjustPan|stateHidden"
         tools:ignore="LockedOrientationActivity"
-        tools:replace="android:allowBackup">
+        tools:replace="android:allowBackup"
+        android:extractNativeLibs="true">
 
         <activity
             android:name=".activity.SplashActivity"

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Kownu</string>
+    <string name="app_name">Tosl</string>
     <string name="app_browser_name">通用浏览器</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -21,8 +21,8 @@
     <string name="about_item_author_github">联系我们</string>
     <string name="about_item_donation_link">捐赠作者</string>
     <string name="about_item_add_qq_group">QQ交流群</string>
-    <string name="url_project_github">https://github.com/xuexiangjys/TemplateAppProject</string>
-    <string name="url_author_github">https://gitee.com/xuexiangjys/xuexiangjys</string>
+    <string name="url_project_github">www.cyfblog.website</string>
+    <string name="url_author_github">https://github.com/ww-1009/kownu</string>
     <string name="url_donation_link">https://gitee.com/xuexiangjys/Resource/blob/master/doc/sponsor.md</string>
     <string name="url_add_qq_group">http://qm.qq.com/cgi-bin/qm/qr?k=tiP-E6rDf0y77PRNfp2lNVcc9RsglPCM</string>
 
@@ -50,11 +50,11 @@
     <string name="lab_forget_password">忘记密码?</string>
     <string name="lab_login_by_verify_code">验证码登录</string>
     <string name="lab_login_by_password">密码登录</string>
-    <string name="tip_please_input_phone_number">请输入手机号码</string>
+    <string name="tip_please_input_phone_number">请输入用户名</string>
     <string name="title_phone_number">手机号码</string>
     <string name="title_password">密码</string>
     <string name="title_old_password">旧密码</string>
-    <string name="hint_please_input_verify_code">请输入验证码</string>
+    <string name="hint_please_input_verify_code">请输入密码</string>
     <string name="lab_verify_code">验证码</string>
     <string name="tip_password_error">密码必须是8~18位字母和数字的组合！</string>
     <string name="tip_new_password_error">新密码必须是8~18位字母和数字的组合！</string>
@@ -77,4 +77,10 @@
     <string name="label_next">下一条</string>
     <string name="tip_ignore_message">以后不再提示此类信息</string>
     <string name="tip_title">你知道吗？</string>
+
+<!--    dialog-->
+    <string name="sos_dialog">求救平台</string>
+    <string name="lab_choice">选择</string>
+    <string name="lab_cancel">取消</string>
+
 </resources>

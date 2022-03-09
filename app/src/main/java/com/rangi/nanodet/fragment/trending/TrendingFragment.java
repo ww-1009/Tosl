@@ -41,10 +41,6 @@ import com.xuexiang.xui.widget.actionbar.TitleBar;
 
 import me.samlss.broccoli.Broccoli;
 
-/**
- * @author xuexiang
- * @since 2019-10-30 00:19
- */
 @Page(anim = CoreAnim.none)
 public class TrendingFragment extends BaseFragment<FragmentTrendingBinding> {
 
@@ -104,24 +100,4 @@ public class TrendingFragment extends BaseFragment<FragmentTrendingBinding> {
         binding.recyclerView.setAdapter(delegateAdapter);
         mNewsAdapter.refresh(DemoDataProvider.getDemoTrendingInfos());
     }
-//    @Override
-//    protected void initListeners() {
-//        //下拉刷新
-//        binding.refreshLayout.setOnRefreshListener(refreshLayout -> {
-//            // TODO: 2020-02-25 这里只是模拟了网络请求
-//            refreshLayout.getLayout().postDelayed(() -> {
-//                mNewsAdapter.refresh(DemoDataProvider.getDemoTrendingInfos());
-//                refreshLayout.finishRefresh();
-//            }, 1000);
-//        });
-//        //上拉加载
-//        binding.refreshLayout.setOnLoadMoreListener(refreshLayout -> {
-//            // TODO: 2020-02-25 这里只是模拟了网络请求
-//            refreshLayout.getLayout().postDelayed(() -> {
-//                mNewsAdapter.loadMore(DemoDataProvider.getDemoTrendingInfos());
-//                refreshLayout.finishLoadMore();
-//            }, 1000);
-//        });
-//        binding.refreshLayout.autoRefresh();//第一次进入触发自动刷新，演示效果
-//    }
 }

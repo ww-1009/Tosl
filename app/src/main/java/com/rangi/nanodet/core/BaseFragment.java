@@ -18,6 +18,7 @@
 package com.rangi.nanodet.core;
 
 import android.content.res.Configuration;
+import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -347,6 +348,7 @@ public abstract class BaseFragment<Binding extends ViewBinding> extends XPageFra
                 .setRequestCode(requestCode)
                 .open(this);
     }
+
 
     /**
      * 序列化对象

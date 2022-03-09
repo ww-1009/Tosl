@@ -33,7 +33,7 @@ public:
 //                                    "potted plant", "bed", "dining table", "toilet", "tv", "laptop", "mouse", "remote", "keyboard", "cell phone",
 //                                    "microwave", "oven", "toaster", "sink", "refrigerator", "book", "clock", "vase", "scissors", "teddy bear",
 //                                    "hair drier", "toothbrush"};
-    std::vector<std::string> labels{"A", "B", "C", "D", "E", "F", "G", "hearSingle","iloveyou","ok","yearh","H", "I", "J",
+    std::vector<std::string> labels{"A", "B", "C", "D", "E", "F", "G", "比心","我爱你","好的","耶","H", "I", "J",
                                     "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
                                     "U", "V", "W", "X", "Y", "Z"};
 private:
